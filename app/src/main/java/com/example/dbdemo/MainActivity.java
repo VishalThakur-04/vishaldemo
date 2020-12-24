@@ -1,12 +1,14 @@
 package com.example.dbdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
+import com.example.dbdemo.adapter.RecyclerViewAdapter;
 import com.example.dbdemo.data.MyDbHandler;
 import com.example.dbdemo.model.Coontact;
 
@@ -14,11 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    ListView listView;
+ private RecyclerView recyclerView;
+ private RecyclerViewAdapter recyclerViewAdapter;
+ private ArrayList<Coontact> coontactArrayList;
+ private ArrayAdapter<String> arrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+// recycler view initialization
+
+        recyclerView= findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         MyDbHandler db =new MyDbHandler(MainActivity.this);
@@ -60,25 +72,26 @@ public class MainActivity extends AppCompatActivity {
 
  */
 
-        ArrayList<String> contacts = new ArrayList<>();
+        coontactArrayList = new ArrayList<>();
        // listView =findViewById(R.id.listView);
 
 
 
-        List<Coontact> allCoontacs = db.getAllCoontacts();
-        for(Coontact contact: allCoontacs)
+        List<Coontact> coontactList = db.getAllCoontacts();
+        for(Coontact contact:coontactList )
         {
             Log.d("piece","id" + contact.getId() + "\n" +
                     " Phone Number: " + contact.getPhoneNumber() + "\n" +
                     "Name: " + contact.getName() + "\n");
 
 
-            contacts.add(contact.getName() + " (" + contact.getPhoneNumber()+ ")");
+            coontactArrayList .add(contact);
 
         }
+       // use your recycler  view
+       recyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this,coontactArrayList);
+        recyclerView.setAdapter(recyclerViewAdapter);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,contacts);
-        listView.setAdapter(arrayAdapter);
 
       //  Log.d("hello", "Bro u have " + db.getCount() + "Contacts in your database");
 

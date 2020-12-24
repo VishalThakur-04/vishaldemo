@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1048670921922",
+    "project_id": "vishaldemo-e5384",
+    "storage_bucket": "vishaldemo-e5384.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048670921922:android:94112ada003c7f5e58875b",
+        "android_client_info": {
+          "package_name": "com.example.dbdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048670921922-6q6p9ts2qorafq638vh3cegjk2ng05nn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2rywZ8bo-_pQmEWbthnHZd1XFcQNhMzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048670921922-6q6p9ts2qorafq638vh3cegjk2ng05nn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
